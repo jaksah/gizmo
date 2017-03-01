@@ -9,7 +9,7 @@
     "build": "webpack --bail && cp index.html ./build/",
     "typings:install": "typings install --save",
     "postinstall": "rm -rf typings && typings install",
-    "run": "node_modules/.bin/webpack-dev-server"
+    "start": "node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
