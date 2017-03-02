@@ -25,5 +25,8 @@ module.exports = {
             "node_modules"
         ],
         extensions: ['.jsx', '.js', '.tsx', '.ts']
+    },
+    devServer: {
+        host: '0.0.0.0'
     }
 };
