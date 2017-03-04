@@ -4,9 +4,11 @@ import { Action } from '../actions/index';
 export namespace Store {
 
   export type Counter = { value: number }
+  export type MessageLog = { messages: {message: string, playedAt: Date}[] }
 
   export type All = {
-    counter: Counter
+    counter: Counter,
+    messageLog: MessageLog
   }
 }
 
@@ -27,6 +29,21 @@ function counter (state: Store.Counter = initialState, action: Action): Store.Co
   return state
 }
 
+const initialLogState: Store.MessageLog = {
+  messages: []
+}
+function messageLog (state: Store.MessageLog = initialLogState, action: Action): Store.MessageLog {
+  const { messages } = state;
+  switch (action.type) {
+    case 'PLAY_TTS_SUCCESS':
+      const {message, playedAt} = action.response as {message: string, playedAt: Date};
+      const newValue = messages.concat({message, playedAt})
+      return {messages: newValue};
+  }
+    return state
+}
+
 export const reducers = combineReducers<Store.All>({
-  counter
+  counter,
+  messageLog
 })

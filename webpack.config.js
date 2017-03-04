@@ -4,7 +4,7 @@ var path = require('path');
 var SRC_DIR = path.join(__dirname, 'src');
 
 module.exports = {
-    entry: ['./src/app.tsx'],
+    entry: ['./src/index.tsx'],
     module: {
         loaders: [{
             test: /\.tsx?$/,
