@@ -42,6 +42,7 @@ class PageComponent extends React.Component<ConnectedState & ConnectedDispatch &
                 <div>
                     {messageLog.messages.map((m, i) => <div key={i}>{m.message} - {m.playedAt.toString()}</div>)}
                 </div>
+                {messageLog.isLoading && <div>Loading...</div>}
             </div>
         );
     }

@@ -15,11 +15,11 @@ export type Action = {
 } | {
   type: 'RESET_COUNTER',
 }
-
 // Async actions...
 | ({ type: 'PLAY_TTS_REQUEST'} & QText)
 | ({ type: 'PLAY_TTS_SUCCESS'} & QText & S<{}>)
 | ({ type: 'PLAY_TTS_ERROR'} & QText & E)
+
 
 export const incrementCounter = (delta: number): Action => ({
   type: 'INCREMENT_COUNTER',

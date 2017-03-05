@@ -7,8 +7,6 @@
     "clean": "rm -rf ./build/",
     "prebuild": "npm run clean",
     "build": "webpack --bail && cp index.html ./build/",
-    "typings:install": "typings install --save",
-    "postinstall": "rm -rf typings && typings install",
     "start": "node_modules/.bin/webpack-dev-server"
   },
   "repository": {
@@ -24,8 +22,10 @@
   "dependencies": {
     "@types/react": "^15.0.13",
     "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.36",
     "@types/redux-logger": "^2.6.34",
     "@types/redux-thunk": "^2.1.0",
+    "@types/superagent": "^2.0.36",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

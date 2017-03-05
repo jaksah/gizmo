@@ -4,7 +4,13 @@ import { Action } from '../actions/index';
 export namespace Store {
 
   export type Counter = { value: number }
-  export type MessageLog = { messages: {message: string, playedAt: Date}[] }
+  export type MessageLog = {
+    isLoading: boolean,
+    messages: {
+      message: string,
+      playedAt: Date
+    }[]
+  }
 
   export type All = {
     counter: Counter,
@@ -30,15 +36,20 @@ function counter (state: Store.Counter = initialState, action: Action): Store.Co
 }
 
 const initialLogState: Store.MessageLog = {
+  isLoading: false,
   messages: []
 }
 function messageLog (state: Store.MessageLog = initialLogState, action: Action): Store.MessageLog {
   const { messages } = state;
   switch (action.type) {
+    case 'PLAY_TTS_REQUEST':
+      return {messages: state.messages, isLoading: true};
     case 'PLAY_TTS_SUCCESS':
       const {message, playedAt} = action.response as {message: string, playedAt: Date};
       const newValue = messages.concat({message, playedAt})
-      return {messages: newValue};
+      return {messages: newValue, isLoading: false};
+    case 'PLAY_TTS_ERROR':
+      return {messages: state.messages, isLoading: false};
   }
     return state
 }
